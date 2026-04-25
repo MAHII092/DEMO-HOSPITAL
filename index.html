@@ -3,332 +3,271 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sahyadri Multi-Specialty Hospital</title>
+<title>Demo Hospital — Website Preview</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --teal: #0F6E56;
-    --teal-light: #1D9E75;
-    --teal-pale: #E1F5EE;
-    --teal-mid: #5DCAA5;
-    --navy: #042C53;
-    --blue: #185FA5;
-    --blue-light: #E6F1FB;
-    --amber: #BA7517;
-    --amber-light: #FAEEDA;
-    --coral: #D85A30;
-    --gray: #5F5E5A;
-    --gray-light: #F1EFE8;
-    --white: #ffffff;
-    --text: #2C2C2A;
-    --border: rgba(0,0,0,0.1);
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: #fff; }
-  h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+:root {
+  --teal:#0F6E56;--teal-l:#1D9E75;--teal-p:#E1F5EE;--teal-m:#5DCAA5;
+  --navy:#042C53;--blue:#185FA5;--blue-l:#E6F1FB;
+  --amber:#BA7517;--amber-l:#FAEEDA;--coral:#D85A30;
+  --gray:#5F5E5A;--gray-l:#F1EFE8;--white:#fff;--text:#2C2C2A;--bdr:rgba(0,0,0,0.1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:#fff;overflow-x:hidden;}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;}
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 1000;
-    background: rgba(4,44,83,0.97);
-    backdrop-filter: blur(8px);
-    padding: 0 2rem;
-    display: flex; align-items: center; justify-content: space-between; height: 68px;
-  }
-  .nav-logo { display: flex; align-items: center; gap: 12px; }
-  .nav-logo .cross {
-    width: 36px; height: 36px; background: var(--teal-mid);
-    border-radius: 8px; display: flex; align-items: center; justify-content: center;
-    font-size: 22px; color: white; font-weight: 700; font-family: sans-serif;
-  }
-  .nav-logo span { color: white; font-size: 18px; font-family: 'Playfair Display', serif; font-weight: 600; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--teal-mid); }
-  .nav-cta {
-    background: var(--teal-light); color: white; border: none;
-    padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600;
-    cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s;
-  }
-  .nav-cta:hover { background: var(--teal); }
+/* ── DEMO WATERMARK ── */
+body::before{
+  content:'DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO DEMO';
+  position:fixed;top:0;left:0;width:100vw;height:100vh;
+  font-family:'DM Sans',sans-serif;font-size:48px;font-weight:700;
+  color:rgba(15,110,86,0.055);letter-spacing:12px;line-height:3.2;
+  transform:rotate(-30deg) scale(1.4);transform-origin:center;
+  pointer-events:none;z-index:9999;word-break:break-all;
+  user-select:none;white-space:normal;overflow:hidden;
+}
 
-  /* PAGES */
-  .page { display: none; }
-  .page.active { display: block; }
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;width:100%;z-index:1000;
+  background:rgba(4,44,83,0.97);backdrop-filter:blur(8px);
+  padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:66px;
+}
+.nav-logo{display:flex;align-items:center;gap:12px;}
+.nav-cross{
+  width:36px;height:36px;background:var(--teal-m);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;font-weight:700;
+}
+.nav-logo span{color:#fff;font-size:17px;font-family:'Playfair Display',serif;font-weight:600;}
+.nav-badge{
+  background:rgba(93,202,165,0.2);border:1px solid rgba(93,202,165,0.35);
+  color:var(--teal-m);padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;
+  letter-spacing:1px;margin-left:8px;
+}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--teal-m);}
+.nav-cta{
+  background:var(--teal-l);color:#fff;border:none;padding:10px 22px;
+  border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:background .2s;
+}
+.nav-cta:hover{background:var(--teal);}
 
-  /* HERO */
-  .hero {
-    min-height: 100vh; background: linear-gradient(135deg, var(--navy) 0%, #0c4478 50%, #0F6E56 100%);
-    display: flex; align-items: center; padding: 100px 4rem 4rem;
-    position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: ''; position: absolute; top: -80px; right: -80px;
-    width: 500px; height: 500px; border-radius: 50%;
-    background: rgba(29,158,117,0.12); border: 1px solid rgba(93,202,165,0.2);
-  }
-  .hero::after {
-    content: ''; position: absolute; bottom: -120px; left: 20%;
-    width: 350px; height: 350px; border-radius: 50%;
-    background: rgba(93,202,165,0.08); border: 1px solid rgba(93,202,165,0.15);
-  }
-  .hero-content { max-width: 600px; z-index: 1; }
-  .hero-badge {
-    display: inline-block; background: rgba(93,202,165,0.2); border: 1px solid rgba(93,202,165,0.4);
-    color: var(--teal-mid); padding: 6px 16px; border-radius: 20px;
-    font-size: 13px; font-weight: 500; margin-bottom: 1.5rem; letter-spacing: 0.5px;
-  }
-  .hero h1 { font-size: 3.2rem; color: white; line-height: 1.15; margin-bottom: 1rem; }
-  .hero h1 span { color: var(--teal-mid); }
-  .hero p { color: rgba(255,255,255,0.75); font-size: 16px; line-height: 1.7; margin-bottom: 2rem; max-width: 480px; }
-  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--teal-light); color: white; border: none;
-    padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 600;
-    cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s;
-  }
-  .btn-primary:hover { background: var(--teal); transform: translateY(-1px); }
-  .btn-outline {
-    background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.4);
-    padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 600;
-    cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s;
-  }
-  .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.08); }
+/* ── PAGES ── */
+.page{display:none;}.page.active{display:block;}
 
-  .hero-stats {
-    display: flex; gap: 2.5rem; margin-top: 3rem;
-    border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem;
-  }
-  .stat-item { text-align: center; }
-  .stat-num { font-size: 1.8rem; font-weight: 700; color: var(--teal-mid); font-family: 'Playfair Display', serif; }
-  .stat-label { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  background:linear-gradient(135deg,var(--navy) 0%,#0c4478 50%,#0F6E56 100%);
+  display:flex;align-items:center;padding:100px 4rem 4rem;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-80px;right:-80px;width:500px;height:500px;
+  border-radius:50%;background:rgba(29,158,117,.12);border:1px solid rgba(93,202,165,.2);
+}
+.hero::after{
+  content:'';position:absolute;bottom:-120px;left:20%;width:350px;height:350px;
+  border-radius:50%;background:rgba(93,202,165,.08);border:1px solid rgba(93,202,165,.15);
+}
+.hero-badge{
+  display:inline-block;background:rgba(93,202,165,.2);border:1px solid rgba(93,202,165,.4);
+  color:var(--teal-m);padding:6px 16px;border-radius:20px;
+  font-size:13px;font-weight:500;margin-bottom:1.5rem;letter-spacing:.5px;
+}
+.hero h1{font-size:3.2rem;color:#fff;line-height:1.15;margin-bottom:1rem;}
+.hero h1 span{color:var(--teal-m);}
+.hero p{color:rgba(255,255,255,.75);font-size:16px;line-height:1.7;margin-bottom:2rem;max-width:480px;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-p{
+  background:var(--teal-l);color:#fff;border:none;padding:14px 28px;
+  border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:all .2s;
+}
+.btn-p:hover{background:var(--teal);transform:translateY(-1px);}
+.btn-o{
+  background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4);
+  padding:14px 28px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:all .2s;
+}
+.btn-o:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;border-top:1px solid rgba(255,255,255,.1);padding-top:2rem;}
+.stat-num{font-size:1.8rem;font-weight:700;color:var(--teal-m);font-family:'Playfair Display',serif;}
+.stat-lbl{font-size:12px;color:rgba(255,255,255,.6);margin-top:2px;}
 
-  /* SECTIONS */
-  section { padding: 5rem 4rem; }
-  .section-tag {
-    display: inline-block; background: var(--teal-pale); color: var(--teal);
-    padding: 5px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;
-  }
-  .section-title { font-size: 2.2rem; color: var(--navy); margin-bottom: 0.75rem; }
-  .section-sub { color: var(--gray); font-size: 15px; line-height: 1.7; max-width: 580px; }
-  .section-header { text-align: center; margin-bottom: 3rem; }
-  .section-header .section-sub { margin: 0 auto; }
+/* ── SECTIONS ── */
+section{padding:5rem 4rem;}
+.stag{display:inline-block;background:var(--teal-p);color:var(--teal);padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;}
+.stitle{font-size:2.2rem;color:var(--navy);margin-bottom:.75rem;}
+.ssub{color:var(--gray);font-size:15px;line-height:1.7;max-width:580px;}
+.shdr{text-align:center;margin-bottom:3rem;}.shdr .ssub{margin:0 auto;}
 
-  /* ABOUT */
-  .about { background: var(--gray-light); }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .about-image-block {
-    background: var(--blue-light); border-radius: 20px; padding: 2.5rem;
-    border: 1px solid rgba(24,95,165,0.1); position: relative;
-  }
-  .about-image-block h3 { font-size: 1.4rem; color: var(--navy); margin-bottom: 1rem; }
-  .about-points { display: flex; flex-direction: column; gap: 1rem; }
-  .about-point { display: flex; gap: 12px; align-items: flex-start; }
-  .point-icon {
-    width: 36px; height: 36px; border-radius: 8px; background: var(--teal-pale);
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    font-size: 16px;
-  }
-  .point-text strong { display: block; font-size: 14px; font-weight: 600; color: var(--navy); }
-  .point-text span { font-size: 13px; color: var(--gray); }
-  .about-content .section-tag { display: inline-block; }
-  .about-desc { color: var(--gray); font-size: 15px; line-height: 1.8; margin-bottom: 1.5rem; }
-  .cert-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
-  .cert-badge {
-    background: var(--teal-pale); color: var(--teal); padding: 6px 14px;
-    border-radius: 8px; font-size: 13px; font-weight: 500; border: 1px solid rgba(15,110,86,0.2);
-  }
+/* ── ABOUT ── */
+.about{background:var(--gray-l);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.abox{background:var(--blue-l);border-radius:20px;padding:2.5rem;border:1px solid rgba(24,95,165,.1);}
+.abox h3{font-size:1.3rem;color:var(--navy);margin-bottom:1rem;}
+.apts{display:flex;flex-direction:column;gap:1rem;}
+.apt{display:flex;gap:12px;align-items:flex-start;}
+.aicon{width:36px;height:36px;border-radius:8px;background:var(--teal-p);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.atxt strong{display:block;font-size:14px;font-weight:600;color:var(--navy);}
+.atxt span{font-size:13px;color:var(--gray);}
+.adesc{color:var(--gray);font-size:15px;line-height:1.8;margin-bottom:1.25rem;}
+.certs{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.75rem;}
+.cert{background:var(--teal-p);color:var(--teal);padding:6px 14px;border-radius:8px;font-size:13px;font-weight:500;border:1px solid rgba(15,110,86,.2);}
 
-  /* DEPARTMENTS */
-  .dept-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
-  .dept-card {
-    background: white; border: 1px solid var(--border); border-radius: 16px;
-    padding: 1.8rem 1.5rem; transition: all 0.25s; cursor: default;
-  }
-  .dept-card:hover { box-shadow: 0 8px 32px rgba(15,110,86,0.12); transform: translateY(-3px); border-color: var(--teal-mid); }
-  .dept-icon {
-    width: 52px; height: 52px; border-radius: 12px;
-    display: flex; align-items: center; justify-content: center; font-size: 24px;
-    margin-bottom: 1rem;
-  }
-  .dept-card h4 { font-size: 1rem; color: var(--navy); margin-bottom: 0.4rem; font-family: 'DM Sans', sans-serif; font-weight: 600; }
-  .dept-card p { font-size: 12px; color: var(--gray); line-height: 1.6; }
-  .dept-card .dept-tag { font-size: 11px; color: var(--teal); font-weight: 600; margin-top: 1rem; }
+/* ── DEPARTMENTS ── */
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.5rem;}
+.dcard{background:#fff;border:1px solid var(--bdr);border-radius:16px;padding:1.8rem 1.5rem;transition:all .25s;}
+.dcard:hover{box-shadow:0 8px 32px rgba(15,110,86,.12);transform:translateY(-3px);border-color:var(--teal-m);}
+.dicon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:1rem;}
+.dcard h4{font-size:1rem;color:var(--navy);margin-bottom:.4rem;font-family:'DM Sans',sans-serif;font-weight:600;}
+.dcard p{font-size:12px;color:var(--gray);line-height:1.6;}
+.dtag{font-size:11px;color:var(--teal);font-weight:600;margin-top:1rem;}
 
-  /* DOCTORS */
-  .doctors { background: var(--navy); }
-  .doctors .section-title { color: white; }
-  .doctors .section-sub { color: rgba(255,255,255,0.65); }
-  .doctors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem; }
-  .doctor-card {
-    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 16px; padding: 1.5rem; transition: all 0.25s; text-align: center;
-  }
-  .doctor-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
-  .doc-avatar {
-    width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 1rem;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 24px; font-weight: 700; color: white; font-family: 'Playfair Display', serif;
-  }
-  .doctor-card h4 { color: white; font-size: 1rem; font-family: 'DM Sans', sans-serif; font-weight: 600; margin-bottom: 0.3rem; }
-  .doctor-card .doc-spec { font-size: 12px; color: var(--teal-mid); font-weight: 500; }
-  .doctor-card .doc-exp { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 0.5rem; }
-  .doc-avail { margin-top: 0.75rem; }
-  .avail-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #5DCAA5; margin-right: 6px; }
-  .doc-avail span { font-size: 12px; color: rgba(255,255,255,0.6); }
+/* ── DOCTORS ── */
+.doctors{background:var(--navy);}
+.doctors .stitle{color:#fff;}
+.doctors .ssub{color:rgba(255,255,255,.65);}
+.drgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5rem;}
+.drcard{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:1.5rem;transition:all .25s;text-align:center;}
+.drcard:hover{background:rgba(255,255,255,.1);transform:translateY(-3px);}
+.drav{width:72px;height:72px;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:#fff;font-family:'Playfair Display',serif;}
+.drcard h4{color:#fff;font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:600;margin-bottom:.3rem;}
+.drspec{font-size:12px;color:var(--teal-m);font-weight:500;}
+.drexp{font-size:12px;color:rgba(255,255,255,.5);margin-top:.5rem;}
+.dravail{margin-top:.75rem;}
+.avdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#5DCAA5;margin-right:6px;}
+.dravail span{font-size:12px;color:rgba(255,255,255,.6);}
 
-  /* APPOINTMENT */
-  .appointment { background: var(--gray-light); }
-  .appt-container {
-    max-width: 750px; margin: 0 auto;
-    background: white; border-radius: 20px; padding: 3rem;
-    border: 1px solid var(--border); box-shadow: 0 4px 40px rgba(0,0,0,0.06);
-  }
-  .appt-container h2 { font-size: 1.8rem; color: var(--navy); margin-bottom: 0.5rem; }
-  .appt-container > p { color: var(--gray); font-size: 14px; margin-bottom: 2rem; }
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-  .form-group { display: flex; flex-direction: column; gap: 6px; }
-  .form-group.full { grid-column: 1/-1; }
-  .form-group label { font-size: 13px; font-weight: 600; color: var(--navy); }
-  .form-group input, .form-group select, .form-group textarea {
-    border: 1.5px solid rgba(0,0,0,0.12); border-radius: 10px;
-    padding: 11px 14px; font-size: 14px; font-family: 'DM Sans', sans-serif;
-    color: var(--text); outline: none; transition: border-color 0.2s;
-    background: white;
-  }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    border-color: var(--teal-light);
-  }
-  .form-group textarea { resize: vertical; min-height: 90px; }
-  .submit-btn {
-    width: 100%; background: var(--teal-light); color: white; border: none;
-    padding: 15px; border-radius: 12px; font-size: 15px; font-weight: 600;
-    cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s;
-    margin-top: 1rem;
-  }
-  .submit-btn:hover { background: var(--teal); }
-  .success-msg {
-    display: none; background: var(--teal-pale); border: 1px solid rgba(15,110,86,0.3);
-    border-radius: 12px; padding: 1.2rem 1.5rem; margin-top: 1.5rem;
-    color: var(--teal); font-size: 14px; font-weight: 500; text-align: center;
-  }
+/* ── APPOINTMENT ── */
+.appointment{background:var(--gray-l);}
+.apcont{
+  max-width:750px;margin:0 auto;background:#fff;border-radius:20px;
+  padding:3rem;border:1px solid var(--bdr);box-shadow:0 4px 40px rgba(0,0,0,.06);
+}
+.apcont>h2{font-size:1.8rem;color:var(--navy);margin-bottom:.5rem;}
+.apcont>.sub{color:var(--gray);font-size:14px;margin-bottom:2rem;}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+.fg{display:flex;flex-direction:column;gap:6px;}
+.fg.full{grid-column:1/-1;}
+.fg label{font-size:13px;font-weight:600;color:var(--navy);}
+.fg input,.fg select,.fg textarea{
+  border:1.5px solid rgba(0,0,0,.12);border-radius:10px;
+  padding:11px 14px;font-size:14px;font-family:'DM Sans',sans-serif;
+  color:var(--text);outline:none;transition:border-color .2s;background:#fff;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--teal-l);}
+.fg textarea{resize:vertical;min-height:90px;}
+.sbtn{
+  width:100%;background:var(--teal-l);color:#fff;border:none;
+  padding:15px;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:all .2s;margin-top:1rem;
+}
+.sbtn:hover{background:var(--teal);}
 
-  /* CONTACT */
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-  .contact-info h3 { font-size: 1.5rem; color: var(--navy); margin-bottom: 1.5rem; }
-  .contact-item { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 1.25rem; }
-  .contact-icon {
-    width: 42px; height: 42px; border-radius: 10px; background: var(--teal-pale);
-    display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;
-  }
-  .contact-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--navy); }
-  .contact-text span { font-size: 14px; color: var(--gray); line-height: 1.6; }
-  .map-block {
-    background: var(--blue-light); border-radius: 16px; overflow: hidden;
-    border: 1px solid rgba(24,95,165,0.15); height: 300px;
-    display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;
-  }
-  .map-block .map-icon { font-size: 40px; }
-  .map-block p { color: var(--blue); font-weight: 600; font-size: 15px; }
-  .map-block span { color: var(--gray); font-size: 13px; text-align: center; padding: 0 2rem; }
+/* ── CONTACT ── */
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.cinfo h3{font-size:1.5rem;color:var(--navy);margin-bottom:1.5rem;}
+.citem{display:flex;gap:14px;align-items:flex-start;margin-bottom:1.25rem;}
+.cion{width:42px;height:42px;border-radius:10px;background:var(--teal-p);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.ctxt strong{display:block;font-size:13px;font-weight:600;color:var(--navy);}
+.ctxt span{font-size:14px;color:var(--gray);line-height:1.6;}
+.mapbox{background:var(--blue-l);border-radius:16px;border:1px solid rgba(24,95,165,.15);height:300px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;}
+.mapbox p{color:var(--blue);font-weight:600;font-size:15px;}
+.mapbox span{color:var(--gray);font-size:13px;text-align:center;padding:0 2rem;}
 
-  /* FOOTER */
-  footer {
-    background: var(--navy); color: rgba(255,255,255,0.7);
-    padding: 3rem 4rem; text-align: center;
-  }
-  footer .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: white; margin-bottom: 0.5rem; }
-  footer p { font-size: 13px; }
-  footer .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap; }
-  footer .footer-links a { color: rgba(255,255,255,0.5); font-size: 13px; text-decoration: none; transition: color 0.2s; }
-  footer .footer-links a:hover { color: var(--teal-mid); }
+/* ── FOOTER ── */
+footer{background:var(--navy);color:rgba(255,255,255,.7);padding:3rem 4rem;text-align:center;}
+.flogo{font-family:'Playfair Display',serif;font-size:1.4rem;color:#fff;margin-bottom:.5rem;}
+footer p{font-size:13px;}
+.flinks{display:flex;gap:1.5rem;justify-content:center;margin-top:1.5rem;flex-wrap:wrap;}
+.flinks a{color:rgba(255,255,255,.5);font-size:13px;text-decoration:none;transition:color .2s;}
+.flinks a:hover{color:var(--teal-m);}
 
-  /* RECEPTION PAGE */
-  .reception-page { padding: 6rem 3rem 3rem; min-height: 100vh; background: #f8faf9; }
-  .reception-header {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 2rem; flex-wrap: gap;
-  }
-  .reception-header h1 { font-size: 1.8rem; color: var(--navy); }
-  .reception-header p { color: var(--gray); font-size: 14px; }
-  .back-btn {
-    background: white; border: 1.5px solid var(--border); color: var(--text);
-    padding: 9px 18px; border-radius: 8px; font-size: 14px; font-weight: 500;
-    cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s;
-  }
-  .back-btn:hover { border-color: var(--teal); color: var(--teal); }
-  .reception-stats {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1rem; margin-bottom: 2rem;
-  }
-  .rec-stat {
-    background: white; border: 1px solid var(--border); border-radius: 12px;
-    padding: 1.25rem; text-align: center;
-  }
-  .rec-stat .num { font-size: 2rem; font-weight: 700; font-family: 'Playfair Display', serif; }
-  .rec-stat .lbl { font-size: 12px; color: var(--gray); margin-top: 4px; }
-  .rec-stat.teal .num { color: var(--teal); }
-  .rec-stat.amber .num { color: var(--amber); }
-  .rec-stat.blue .num { color: var(--blue); }
-  .rec-stat.coral .num { color: var(--coral); }
+/* ── POPUP OVERLAY ── */
+.overlay{
+  display:none;position:fixed;inset:0;z-index:10000;
+  background:rgba(4,44,83,0.55);backdrop-filter:blur(4px);
+  align-items:center;justify-content:center;
+}
+.overlay.show{display:flex;animation:fadeIn .3s ease;}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.popup{
+  background:#fff;border-radius:24px;padding:2.5rem 2rem;
+  max-width:460px;width:90%;text-align:center;
+  box-shadow:0 24px 80px rgba(0,0,0,.2);
+  animation:popIn .35s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes popIn{from{transform:scale(0.7);opacity:0}to{transform:scale(1);opacity:1}}
+.popup-icon{
+  width:80px;height:80px;border-radius:50%;background:var(--teal-p);
+  display:flex;align-items:center;justify-content:center;
+  font-size:36px;margin:0 auto 1.5rem;border:3px solid var(--teal-m);
+}
+.popup h2{font-size:1.6rem;color:var(--navy);margin-bottom:.75rem;}
+.popup p{color:var(--gray);font-size:14px;line-height:1.7;margin-bottom:.5rem;}
+.popup .appt-ref{
+  background:var(--teal-p);border:1px solid rgba(15,110,86,.25);
+  border-radius:10px;padding:1rem;margin:1.25rem 0;
+}
+.appt-ref .ref-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:.4rem;}
+.appt-ref .ref-row:last-child{margin-bottom:0;}
+.appt-ref .ref-lbl{color:var(--gray);font-weight:500;}
+.appt-ref .ref-val{color:var(--navy);font-weight:600;}
+.popup-steps{display:flex;gap:.75rem;justify-content:center;margin:1.25rem 0;flex-wrap:wrap;}
+.pstep{background:var(--blue-l);color:var(--blue);padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;}
+.popup-close{
+  background:var(--teal-l);color:#fff;border:none;width:100%;
+  padding:13px;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:background .2s;margin-top:.5rem;
+}
+.popup-close:hover{background:var(--teal);}
 
-  .filter-bar {
-    display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;
-    background: white; border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem;
-  }
-  .filter-bar select, .filter-bar input {
-    border: 1px solid rgba(0,0,0,0.12); border-radius: 8px;
-    padding: 8px 12px; font-size: 13px; font-family: 'DM Sans', sans-serif;
-    color: var(--text); outline: none; transition: border-color 0.2s;
-  }
-  .filter-bar select:focus, .filter-bar input:focus { border-color: var(--teal); }
-  .filter-bar label { font-size: 12px; font-weight: 600; color: var(--gray); align-self: center; }
-
-  .appt-table-wrap {
-    background: white; border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
-  }
-  table { width: 100%; border-collapse: collapse; }
-  thead { background: var(--navy); }
-  thead th {
-    padding: 14px 16px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.8);
-    text-align: left; letter-spacing: 0.5px; text-transform: uppercase;
-  }
-  tbody tr { border-bottom: 1px solid rgba(0,0,0,0.05); transition: background 0.15s; }
-  tbody tr:last-child { border-bottom: none; }
-  tbody tr:hover { background: var(--gray-light); }
-  tbody td { padding: 13px 16px; font-size: 13px; color: var(--text); vertical-align: top; }
-  .badge {
-    display: inline-block; padding: 4px 10px; border-radius: 6px;
-    font-size: 11px; font-weight: 600;
-  }
-  .badge.new { background: var(--teal-pale); color: var(--teal); }
-  .badge.confirmed { background: #E6F1FB; color: var(--blue); }
-  .badge.urgent { background: #FCEBEB; color: #A32D2D; }
-  .td-name { font-weight: 600; color: var(--navy); }
-  .td-sub { color: var(--gray); font-size: 11px; margin-top: 2px; }
-  .print-btn {
-    background: var(--teal-light); color: white; border: none;
-    padding: 9px 18px; border-radius: 8px; font-size: 13px; font-weight: 600;
-    cursor: pointer; font-family: 'DM Sans', sans-serif;
-  }
-  .empty-state {
-    text-align: center; padding: 4rem 2rem; color: var(--gray);
-  }
-  .empty-state .icon { font-size: 40px; margin-bottom: 1rem; }
-  .empty-state p { font-size: 15px; }
-  .empty-state small { font-size: 13px; }
-
-  @media (max-width: 768px) {
-    nav .nav-links { display: none; }
-    .hero { padding: 100px 1.5rem 3rem; }
-    .hero h1 { font-size: 2rem; }
-    section { padding: 3.5rem 1.5rem; }
-    .about-grid, .contact-grid, .form-grid { grid-template-columns: 1fr; }
-    .hero-stats { gap: 1.5rem; }
-    .reception-page { padding: 5rem 1rem 2rem; }
-    .appt-table-wrap { overflow-x: auto; }
-  }
+/* ── RECEPTION ── */
+.recpage{padding:6rem 3rem 3rem;min-height:100vh;background:#f8faf9;}
+.rechdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;}
+.rechdr h1{font-size:1.8rem;color:var(--navy);}
+.rechdr p{color:var(--gray);font-size:14px;}
+.back-btn{background:#fff;border:1.5px solid var(--bdr);color:var(--text);padding:9px 18px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.back-btn:hover{border-color:var(--teal);color:var(--teal);}
+.recstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;margin-bottom:2rem;}
+.rst{background:#fff;border:1px solid var(--bdr);border-radius:12px;padding:1.25rem;text-align:center;}
+.rst .n{font-size:2rem;font-weight:700;font-family:'Playfair Display',serif;}
+.rst .l{font-size:12px;color:var(--gray);margin-top:4px;}
+.rst.c1 .n{color:var(--teal)}.rst.c2 .n{color:var(--amber)}.rst.c3 .n{color:var(--coral)}.rst.c4 .n{color:var(--blue)}
+.fbar{display:flex;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;background:#fff;border:1px solid var(--bdr);border-radius:12px;padding:1rem 1.25rem;align-items:center;}
+.fbar select,.fbar input{border:1px solid rgba(0,0,0,.12);border-radius:8px;padding:8px 12px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--text);outline:none;transition:border-color .2s;}
+.fbar select:focus,.fbar input:focus{border-color:var(--teal);}
+.fbar label{font-size:12px;font-weight:600;color:var(--gray);}
+.twrap{background:#fff;border:1px solid var(--bdr);border-radius:16px;overflow:hidden;}
+table{width:100%;border-collapse:collapse;}
+thead{background:var(--navy);}
+thead th{padding:14px 16px;font-size:11px;font-weight:600;color:rgba(255,255,255,.8);text-align:left;letter-spacing:.5px;text-transform:uppercase;}
+tbody tr{border-bottom:1px solid rgba(0,0,0,.05);transition:background .15s;}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:var(--gray-l);}
+tbody td{padding:13px 16px;font-size:13px;color:var(--text);vertical-align:top;}
+.badge{display:inline-block;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;}
+.badge.nm{background:var(--teal-p);color:var(--teal);}
+.badge.urg{background:#FCEBEB;color:#A32D2D;}
+.tdname{font-weight:600;color:var(--navy);}
+.tdsub{color:var(--gray);font-size:11px;margin-top:2px;}
+.pbtn{background:var(--teal-l);color:#fff;border:none;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.empty{text-align:center;padding:4rem 2rem;color:var(--gray);}
+.empty .eicon{font-size:40px;margin-bottom:1rem;}
+@media(max-width:768px){
+  nav .nav-links{display:none;}
+  .hero{padding:100px 1.5rem 3rem;}
+  .hero h1{font-size:2rem;}
+  section{padding:3.5rem 1.5rem;}
+  .about-grid,.cgrid,.fgrid{grid-template-columns:1fr;}
+  .hero-stats{gap:1.5rem;flex-wrap:wrap;}
+  .recpage{padding:5rem 1rem 2rem;}
+  .twrap{overflow-x:auto;}
+}
 </style>
 </head>
 <body>
@@ -336,36 +275,37 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <div class="cross">✚</div>
-    <span>Sahyadri Hospital</span>
+    <div class="nav-cross">✚</div>
+    <span>Demo Hospital</span>
+    <span class="nav-badge">DEMO</span>
   </div>
   <ul class="nav-links">
-    <li><a href="#" onclick="scrollTo('about')">About</a></li>
-    <li><a href="#" onclick="scrollTo('departments')">Departments</a></li>
-    <li><a href="#" onclick="scrollTo('doctors')">Doctors</a></li>
-    <li><a href="#" onclick="scrollTo('contact')">Contact</a></li>
+    <li><a href="#" onclick="goto('about')">About</a></li>
+    <li><a href="#" onclick="goto('departments')">Departments</a></li>
+    <li><a href="#" onclick="goto('doctors')">Doctors</a></li>
+    <li><a href="#" onclick="goto('contact')">Contact</a></li>
   </ul>
-  <button class="nav-cta" onclick="scrollTo('appointment')">Appointment घ्या</button>
+  <button class="nav-cta" onclick="goto('appointment')">📅 Appointment घ्या</button>
 </nav>
 
-<!-- MAIN WEBSITE PAGE -->
+<!-- MAIN PAGE -->
 <div id="main-page" class="page active">
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-content">
-      <div class="hero-badge">✺ Pune मधील सर्वोत्तम Multi-Specialty Hospital</div>
+    <div class="hero-content" style="max-width:600px;z-index:1;">
+      <div class="hero-badge">✺ Demo City मधील सर्वोत्तम Multi-Specialty Hospital</div>
       <h1>आपले स्वास्थ्य,<br>आमची <span>जबाबदारी</span></h1>
-      <p>Sahyadri Multi-Specialty Hospital मध्ये आपले स्वागत आहे. 25 वर्षांपासून Pune च्या लोकांना उच्च दर्जाची वैद्यकीय सेवा देत आहोत.</p>
+      <p>Demo Multi-Specialty Hospital मध्ये आपले स्वागत आहे. 25 वर्षांपासून Demo City च्या लोकांना उच्च दर्जाची वैद्यकीय सेवा देत आहोत.</p>
       <div class="hero-btns">
-        <button class="btn-primary" onclick="scrollTo('appointment')">📅 Appointment बुक करा</button>
-        <button class="btn-outline" onclick="scrollTo('about')">आमच्याबद्दल जाणून घ्या</button>
+        <button class="btn-p" onclick="goto('appointment')">📅 Appointment बुक करा</button>
+        <button class="btn-o" onclick="goto('about')">आमच्याबद्दल जाणून घ्या</button>
       </div>
       <div class="hero-stats">
-        <div class="stat-item"><div class="stat-num">50+</div><div class="stat-label">तज्ज्ञ डॉक्टर्स</div></div>
-        <div class="stat-item"><div class="stat-num">20+</div><div class="stat-label">विभाग</div></div>
-        <div class="stat-item"><div class="stat-num">1L+</div><div class="stat-label">समाधानी रुग्ण</div></div>
-        <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-label">आपत्कालीन सेवा</div></div>
+        <div><div class="stat-num">50+</div><div class="stat-lbl">तज्ज्ञ डॉक्टर्स</div></div>
+        <div><div class="stat-num">20+</div><div class="stat-lbl">विभाग</div></div>
+        <div><div class="stat-num">1L+</div><div class="stat-lbl">समाधानी रुग्ण</div></div>
+        <div><div class="stat-num">24/7</div><div class="stat-lbl">आपत्कालीन सेवा</div></div>
       </div>
     </div>
   </section>
@@ -373,40 +313,25 @@
   <!-- ABOUT -->
   <section class="about" id="about">
     <div class="about-grid">
-      <div class="about-content">
-        <span class="section-tag">आमच्याबद्दल</span>
-        <h2 class="section-title">25 वर्षांचा विश्वास आणि उत्कृष्टतेचा वारसा</h2>
-        <p class="about-desc">Sahyadri Multi-Specialty Hospital ची स्थापना 1999 साली झाली. आम्ही Pune च्या मध्यभागी असून संपूर्ण पश्चिम महाराष्ट्रातील रुग्णांना दर्जेदार वैद्यकीय सेवा पुरवतो.</p>
-        <p class="about-desc">आमच्याकडे अत्याधुनिक तंत्रज्ञान, अनुभवी डॉक्टर्स आणि दयाळू कर्मचारी वर्ग आहे. रुग्णाचे समाधान हेच आमचे ध्येय आहे.</p>
-        <div class="cert-row">
-          <span class="cert-badge">✓ NABH Accredited</span>
-          <span class="cert-badge">✓ ISO 9001:2015</span>
-          <span class="cert-badge">✓ JCI Certified</span>
+      <div>
+        <span class="stag">आमच्याबद्दल</span>
+        <h2 class="stitle">25 वर्षांचा विश्वास आणि उत्कृष्टतेचा वारसा</h2>
+        <p class="adesc">Demo Multi-Specialty Hospital ची स्थापना 1999 साली झाली. आम्ही Demo City च्या मध्यभागी असून संपूर्ण परिसरातील रुग्णांना दर्जेदार वैद्यकीय सेवा पुरवतो.</p>
+        <p class="adesc">आमच्याकडे अत्याधुनिक तंत्रज्ञान, अनुभवी डॉक्टर्स आणि दयाळू कर्मचारी वर्ग आहे. रुग्णाचे समाधान हेच आमचे ध्येय आहे.</p>
+        <div class="certs">
+          <span class="cert">✓ NABH Accredited</span>
+          <span class="cert">✓ ISO 9001:2015</span>
+          <span class="cert">✓ JCI Certified</span>
         </div>
       </div>
-      <div class="about-image-block">
+      <div class="abox">
         <h3>आमच्या सुविधा</h3>
-        <div class="about-points">
-          <div class="about-point">
-            <div class="point-icon">🏥</div>
-            <div class="point-text"><strong>300 बेड्स</strong><span>ICU, General, Private & Semi-private rooms</span></div>
-          </div>
-          <div class="about-point">
-            <div class="point-icon">🔬</div>
-            <div class="point-text"><strong>आधुनिक Laboratory</strong><span>24/7 Pathology & Radiology सेवा</span></div>
-          </div>
-          <div class="about-point">
-            <div class="point-icon">🚑</div>
-            <div class="point-text"><strong>Emergency Services</strong><span>24 तास Trauma & Emergency विभाग</span></div>
-          </div>
-          <div class="about-point">
-            <div class="point-icon">💊</div>
-            <div class="point-text"><strong>Pharmacy</strong><span>24/7 In-house Pharmacy उपलब्ध</span></div>
-          </div>
-          <div class="about-point">
-            <div class="point-icon">🅿️</div>
-            <div class="point-text"><strong>Parking & Canteen</strong><span>विस्तृत पार्किंग व स्वच्छ कँटीन</span></div>
-          </div>
+        <div class="apts">
+          <div class="apt"><div class="aicon">🏥</div><div class="atxt"><strong>300 बेड्स</strong><span>ICU, General, Private & Semi-private rooms</span></div></div>
+          <div class="apt"><div class="aicon">🔬</div><div class="atxt"><strong>आधुनिक Laboratory</strong><span>24/7 Pathology & Radiology सेवा</span></div></div>
+          <div class="apt"><div class="aicon">🚑</div><div class="atxt"><strong>Emergency Services</strong><span>24 तास Trauma & Emergency विभाग</span></div></div>
+          <div class="apt"><div class="aicon">💊</div><div class="atxt"><strong>Pharmacy</strong><span>24/7 In-house Pharmacy उपलब्ध</span></div></div>
+          <div class="apt"><div class="aicon">🅿️</div><div class="atxt"><strong>Parking & Canteen</strong><span>विस्तृत पार्किंग व स्वच्छ कँटीन</span></div></div>
         </div>
       </div>
     </div>
@@ -414,166 +339,60 @@
 
   <!-- DEPARTMENTS -->
   <section id="departments">
-    <div class="section-header">
-      <span class="section-tag">विभाग</span>
-      <h2 class="section-title">आमचे वैद्यकीय विभाग</h2>
-      <p class="section-sub">सर्व प्रकारच्या आजारांवर तज्ज्ञ उपचार देणारे आमचे 20+ विभाग</p>
+    <div class="shdr">
+      <span class="stag">विभाग</span>
+      <h2 class="stitle">आमचे वैद्यकीय विभाग</h2>
+      <p class="ssub">सर्व प्रकारच्या आजारांवर तज्ज्ञ उपचार देणारे आमचे 20+ विभाग</p>
     </div>
-    <div class="dept-grid">
-      <div class="dept-card">
-        <div class="dept-icon" style="background:#E1F5EE;">❤️</div>
-        <h4>Cardiology (हृदयरोग)</h4>
-        <p>हृदय व रक्तवाहिन्यांच्या आजारांवर विशेष उपचार</p>
-        <div class="dept-tag">→ 6 तज्ज्ञ</div>
-      </div>
-      <div class="dept-card">
-        <div class="dept-icon" style="background:#E6F1FB;">🧠</div>
-        <h4>Neurology (मेंदूरोग)</h4>
-        <p>मेंदू, मणका व चेतासंस्थेच्या विकारांवर उपचार</p>
-        <div class="dept-tag">→ 4 तज्ज्ञ</div>
-      </div>
-      <div class="dept-card">
-        <div class="dept-icon" style="background:#FAEEDA;">🦴</div>
-        <h4>Orthopedics (हाडरोग)</h4>
-        <p>सांधे, हाडे व स्नायूंच्या आजारांवर शस्त्रक्रिया</p>
-        <div class="dept-tag">→ 5 तज्ज्ञ</div>
-      </div>
-      <div class="dept-card">
-        <div class="dept-icon" style="background:#FBEAF0;">👶</div>
-        <h4>Pediatrics (बालरोग)</h4>
-        <p>0 ते 18 वर्षांच्या मुलांचे आरोग्य सांभाळणे</p>
-        <div class="dept-tag">→ 4 तज्ज्ञ</div>
-      </div>
-      <div class="dept-card">
-        <div class="dept-icon" style="background:#EAF3DE;">🌿</div>
-        <h4>Gastroenterology</h4>
-        <p>पोट, यकृत व पाचनसंस्थेच्या आजारांवर उपचार</p>
-        <div class="dept-tag">→ 3 तज्ज्ञ</div>
-      </div>
-      <div class="dept-card">
-        <div class="dept-icon" style="background:#FCEBEB;">🫁</div>
-        <h4>Pulmonology (श्वसनरोग)</h4>
-        <p>फुफ्फुस व श्वसनसंस्थेच्या आजारांवर तज्ज्ञ उपचार</p>
-        <div class="dept-tag">→ 3 तज्ज्ञ</div>
-      </div>
-      <div class="dept-card">
-        <div class="dept-icon" style="background:#E1F5EE;">🤰</div>
-        <h4>Gynecology (स्त्रीरोग)</h4>
-        <p>महिलांचे आरोग्य, प्रसूती व संबंधित उपचार</p>
-        <div class="dept-tag">→ 5 तज्ज्ञ</div>
-      </div>
-      <div class="dept-card">
-        <div class="dept-icon" style="background:#E6F1FB;">👁️</div>
-        <h4>Ophthalmology (नेत्ररोग)</h4>
-        <p>डोळ्यांच्या आजारांवर लेसर व शस्त्रक्रिया उपचार</p>
-        <div class="dept-tag">→ 3 तज्ज्ञ</div>
-      </div>
-      <div class="dept-card">
-        <div class="dept-icon" style="background:#FAEEDA;">🦷</div>
-        <h4>Dentistry (दंतचिकित्सा)</h4>
-        <p>दात व हिरड्यांचे संपूर्ण उपचार व शस्त्रक्रिया</p>
-        <div class="dept-tag">→ 4 तज्ज्ञ</div>
-      </div>
-      <div class="dept-card">
-        <div class="dept-icon" style="background:#FBEAF0;">🧬</div>
-        <h4>Oncology (कर्करोग)</h4>
-        <p>कर्करोगावरील Chemotherapy व Radiation उपचार</p>
-        <div class="dept-tag">→ 4 तज्ज्ञ</div>
-      </div>
-      <div class="dept-card">
-        <div class="dept-icon" style="background:#EAF3DE;">🩺</div>
-        <h4>General Medicine</h4>
-        <p>सामान्य आजारांवर OPD व Indoor उपचार सेवा</p>
-        <div class="dept-tag">→ 8 तज्ज्ञ</div>
-      </div>
-      <div class="dept-card">
-        <div class="dept-icon" style="background:#FCEBEB;">🔬</div>
-        <h4>Nephrology (मूत्रपिंड)</h4>
-        <p>किडनी विकार व Dialysis सेवा उपलब्ध</p>
-        <div class="dept-tag">→ 3 तज्ज्ञ</div>
-      </div>
+    <div class="dgrid">
+      <div class="dcard"><div class="dicon" style="background:#E1F5EE;">❤️</div><h4>Cardiology (हृदयरोग)</h4><p>हृदय व रक्तवाहिन्यांच्या आजारांवर विशेष उपचार</p><div class="dtag">→ 6 तज्ज्ञ</div></div>
+      <div class="dcard"><div class="dicon" style="background:#E6F1FB;">🧠</div><h4>Neurology (मेंदूरोग)</h4><p>मेंदू, मणका व चेतासंस्थेच्या विकारांवर उपचार</p><div class="dtag">→ 4 तज्ज्ञ</div></div>
+      <div class="dcard"><div class="dicon" style="background:#FAEEDA;">🦴</div><h4>Orthopedics (हाडरोग)</h4><p>सांधे, हाडे व स्नायूंच्या आजारांवर शस्त्रक्रिया</p><div class="dtag">→ 5 तज्ज्ञ</div></div>
+      <div class="dcard"><div class="dicon" style="background:#FBEAF0;">👶</div><h4>Pediatrics (बालरोग)</h4><p>0 ते 18 वर्षांच्या मुलांचे आरोग्य सांभाळणे</p><div class="dtag">→ 4 तज्ज्ञ</div></div>
+      <div class="dcard"><div class="dicon" style="background:#EAF3DE;">🌿</div><h4>Gastroenterology</h4><p>पोट, यकृत व पाचनसंस्थेच्या आजारांवर उपचार</p><div class="dtag">→ 3 तज्ज्ञ</div></div>
+      <div class="dcard"><div class="dicon" style="background:#FCEBEB;">🫁</div><h4>Pulmonology (श्वसनरोग)</h4><p>फुफ्फुस व श्वसनसंस्थेच्या आजारांवर तज्ज्ञ उपचार</p><div class="dtag">→ 3 तज्ज्ञ</div></div>
+      <div class="dcard"><div class="dicon" style="background:#E1F5EE;">🤰</div><h4>Gynecology (स्त्रीरोग)</h4><p>महिलांचे आरोग्य, प्रसूती व संबंधित उपचार</p><div class="dtag">→ 5 तज्ज्ञ</div></div>
+      <div class="dcard"><div class="dicon" style="background:#E6F1FB;">👁️</div><h4>Ophthalmology (नेत्ररोग)</h4><p>डोळ्यांच्या आजारांवर लेसर व शस्त्रक्रिया उपचार</p><div class="dtag">→ 3 तज्ज्ञ</div></div>
+      <div class="dcard"><div class="dicon" style="background:#FAEEDA;">🦷</div><h4>Dentistry (दंतचिकित्सा)</h4><p>दात व हिरड्यांचे संपूर्ण उपचार व शस्त्रक्रिया</p><div class="dtag">→ 4 तज्ज्ञ</div></div>
+      <div class="dcard"><div class="dicon" style="background:#FBEAF0;">🧬</div><h4>Oncology (कर्करोग)</h4><p>कर्करोगावरील Chemotherapy व Radiation उपचार</p><div class="dtag">→ 4 तज्ज्ञ</div></div>
+      <div class="dcard"><div class="dicon" style="background:#EAF3DE;">🩺</div><h4>General Medicine</h4><p>सामान्य आजारांवर OPD व Indoor उपचार सेवा</p><div class="dtag">→ 8 तज्ज्ञ</div></div>
+      <div class="dcard"><div class="dicon" style="background:#FCEBEB;">🔬</div><h4>Nephrology (मूत्रपिंड)</h4><p>किडनी विकार व Dialysis सेवा उपलब्ध</p><div class="dtag">→ 3 तज्ज्ञ</div></div>
     </div>
   </section>
 
   <!-- DOCTORS -->
   <section class="doctors" id="doctors">
-    <div class="section-header">
-      <span class="section-tag" style="background:rgba(93,202,165,0.2);color:var(--teal-mid);">आमचे डॉक्टर्स</span>
-      <h2 class="section-title">तज्ज्ञ वैद्यकीय टीम</h2>
-      <p class="section-sub" style="color:rgba(255,255,255,0.65);">देशातील सर्वोत्तम वैद्यकीय संस्थांमधून प्रशिक्षित आमचे तज्ज्ञ</p>
+    <div class="shdr">
+      <span class="stag" style="background:rgba(93,202,165,.2);color:var(--teal-m);">आमचे डॉक्टर्स</span>
+      <h2 class="stitle">तज्ज्ञ वैद्यकीय टीम</h2>
+      <p class="ssub" style="color:rgba(255,255,255,.65);">देशातील सर्वोत्तम वैद्यकीय संस्थांमधून प्रशिक्षित आमचे तज्ज्ञ</p>
     </div>
-    <div class="doctors-grid">
-      <div class="doctor-card">
-        <div class="doc-avatar" style="background:rgba(29,158,117,0.3);">डभ</div>
-        <h4>Dr. Suresh Bhalchandra</h4>
-        <div class="doc-spec">Senior Cardiologist</div>
-        <div class="doc-exp">MD, DM (Cardiology) • 22 वर्षे अनुभव</div>
-        <div class="doc-avail"><span class="avail-dot"></span><span>सोम - शनि, 10am - 2pm</span></div>
-      </div>
-      <div class="doctor-card">
-        <div class="doc-avatar" style="background:rgba(24,95,165,0.35);">डपं</div>
-        <h4>Dr. Priya Nandkumar</h4>
-        <div class="doc-spec">Gynecologist & Obstetrician</div>
-        <div class="doc-exp">MS (OBG), FICOG • 18 वर्षे अनुभव</div>
-        <div class="doc-avail"><span class="avail-dot"></span><span>सोम - शुक्र, 4pm - 8pm</span></div>
-      </div>
-      <div class="doctor-card">
-        <div class="doc-avatar" style="background:rgba(186,117,23,0.3);">डअ</div>
-        <h4>Dr. Amol Deshpande</h4>
-        <div class="doc-spec">Orthopedic Surgeon</div>
-        <div class="doc-exp">MS (Ortho), DNB • 15 वर्षे अनुभव</div>
-        <div class="doc-avail"><span class="avail-dot"></span><span>मंगळ - रवि, 11am - 3pm</span></div>
-      </div>
-      <div class="doctor-card">
-        <div class="doc-avatar" style="background:rgba(162,45,45,0.25);">डस</div>
-        <h4>Dr. Snehal Kulkarni</h4>
-        <div class="doc-spec">Neurologist</div>
-        <div class="doc-exp">MD, DM (Neurology) • 12 वर्षे अनुभव</div>
-        <div class="doc-avail"><span class="avail-dot"></span><span>सोम - शनि, 9am - 1pm</span></div>
-      </div>
-      <div class="doctor-card">
-        <div class="doc-avatar" style="background:rgba(93,202,165,0.25);">डर</div>
-        <h4>Dr. Rahul Pawar</h4>
-        <div class="doc-spec">Pediatrician</div>
-        <div class="doc-exp">MD (Pediatrics), DCH • 10 वर्षे अनुभव</div>
-        <div class="doc-avail"><span class="avail-dot"></span><span>दररोज, 6pm - 9pm</span></div>
-      </div>
-      <div class="doctor-card">
-        <div class="doc-avatar" style="background:rgba(142,135,128,0.3);">डव</div>
-        <h4>Dr. Varsha Jadhav</h4>
-        <div class="doc-spec">Gastroenterologist</div>
-        <div class="doc-exp">MD, DM (Gastro) • 14 वर्षे अनुभव</div>
-        <div class="doc-avail"><span class="avail-dot"></span><span>बुध - सोम, 2pm - 6pm</span></div>
-      </div>
+    <div class="drgrid">
+      <div class="drcard"><div class="drav" style="background:rgba(29,158,117,.3);">Dr</div><h4>Demo Doctor 1</h4><div class="drspec">Senior Cardiologist</div><div class="drexp">MD, DM (Cardiology) • XX वर्षे अनुभव</div><div class="dravail"><span class="avdot"></span><span>सोम - शनि, 10am - 2pm</span></div></div>
+      <div class="drcard"><div class="drav" style="background:rgba(24,95,165,.35);">Dr</div><h4>Demo Doctor 2</h4><div class="drspec">Gynecologist & Obstetrician</div><div class="drexp">MS (OBG), FICOG • XX वर्षे अनुभव</div><div class="dravail"><span class="avdot"></span><span>सोम - शुक्र, 4pm - 8pm</span></div></div>
+      <div class="drcard"><div class="drav" style="background:rgba(186,117,23,.3);">Dr</div><h4>Demo Doctor 3</h4><div class="drspec">Orthopedic Surgeon</div><div class="drexp">MS (Ortho), DNB • XX वर्षे अनुभव</div><div class="dravail"><span class="avdot"></span><span>मंगळ - रवि, 11am - 3pm</span></div></div>
+      <div class="drcard"><div class="drav" style="background:rgba(162,45,45,.25);">Dr</div><h4>Demo Doctor 4</h4><div class="drspec">Neurologist</div><div class="drexp">MD, DM (Neurology) • XX वर्षे अनुभव</div><div class="dravail"><span class="avdot"></span><span>सोम - शनि, 9am - 1pm</span></div></div>
+      <div class="drcard"><div class="drav" style="background:rgba(93,202,165,.25);">Dr</div><h4>Demo Doctor 5</h4><div class="drspec">Pediatrician</div><div class="drexp">MD (Pediatrics), DCH • XX वर्षे अनुभव</div><div class="dravail"><span class="avdot"></span><span>दररोज, 6pm - 9pm</span></div></div>
+      <div class="drcard"><div class="drav" style="background:rgba(142,135,128,.3);">Dr</div><h4>Demo Doctor 6</h4><div class="drspec">Gastroenterologist</div><div class="drexp">MD, DM (Gastro) • XX वर्षे अनुभव</div><div class="dravail"><span class="avdot"></span><span>बुध - सोम, 2pm - 6pm</span></div></div>
     </div>
   </section>
 
   <!-- APPOINTMENT -->
   <section class="appointment" id="appointment">
-    <div class="section-header">
-      <span class="section-tag">Appointment</span>
-      <h2 class="section-title">ऑनलाइन Appointment बुक करा</h2>
-      <p class="section-sub">खाली दिलेला फॉर्म भरा. आम्ही 2 तासांच्या आत confirm करू.</p>
+    <div class="shdr">
+      <span class="stag">Appointment</span>
+      <h2 class="stitle">ऑनलाइन Appointment बुक करा</h2>
+      <p class="ssub">खाली दिलेला फॉर्म भरा. आम्ही 2 तासांच्या आत confirm करू.</p>
     </div>
-    <div class="appt-container">
-      <div class="form-grid">
-        <div class="form-group">
-          <label>रुग्णाचे नाव *</label>
-          <input type="text" id="pt-name" placeholder="पूर्ण नाव लिहा" required>
-        </div>
-        <div class="form-group">
-          <label>वय व लिंग *</label>
-          <input type="text" id="pt-age" placeholder="उदा: 35 वर्षे, पुरुष">
-        </div>
-        <div class="form-group">
-          <label>मोबाईल नंबर *</label>
-          <input type="tel" id="pt-phone" placeholder="10 अंकी नंबर" maxlength="10">
-        </div>
-        <div class="form-group">
-          <label>Email (पर्यायी)</label>
-          <input type="email" id="pt-email" placeholder="email@example.com">
-        </div>
-        <div class="form-group">
+    <div class="apcont">
+      <h2>Appointment Form</h2>
+      <p class="sub">* असलेले fields भरणे आवश्यक आहे</p>
+      <div class="fgrid">
+        <div class="fg"><label>रुग्णाचे नाव *</label><input type="text" id="pt-name" placeholder="पूर्ण नाव लिहा"></div>
+        <div class="fg"><label>वय व लिंग *</label><input type="text" id="pt-age" placeholder="उदा: 35 वर्षे, पुरुष"></div>
+        <div class="fg"><label>मोबाईल नंबर *</label><input type="tel" id="pt-phone" placeholder="10 अंकी नंबर" maxlength="10"></div>
+        <div class="fg"><label>Email (पर्यायी)</label><input type="email" id="pt-email" placeholder="email@example.com"></div>
+        <div class="fg">
           <label>विभाग निवडा *</label>
           <select id="pt-dept">
             <option value="">-- विभाग निवडा --</option>
@@ -591,23 +410,20 @@
             <option>Nephrology (मूत्रपिंड)</option>
           </select>
         </div>
-        <div class="form-group">
+        <div class="fg">
           <label>डॉक्टर निवडा</label>
           <select id="pt-doctor">
             <option value="">-- डॉक्टर निवडा --</option>
-            <option>Dr. Suresh Bhalchandra (Cardiology)</option>
-            <option>Dr. Priya Nandkumar (Gynecology)</option>
-            <option>Dr. Amol Deshpande (Orthopedics)</option>
-            <option>Dr. Snehal Kulkarni (Neurology)</option>
-            <option>Dr. Rahul Pawar (Pediatrics)</option>
-            <option>Dr. Varsha Jadhav (Gastroenterology)</option>
+            <option>Demo Doctor 1 (Cardiology)</option>
+            <option>Demo Doctor 2 (Gynecology)</option>
+            <option>Demo Doctor 3 (Orthopedics)</option>
+            <option>Demo Doctor 4 (Neurology)</option>
+            <option>Demo Doctor 5 (Pediatrics)</option>
+            <option>Demo Doctor 6 (Gastroenterology)</option>
           </select>
         </div>
-        <div class="form-group">
-          <label>इच्छित दिनांक *</label>
-          <input type="date" id="pt-date">
-        </div>
-        <div class="form-group">
+        <div class="fg"><label>इच्छित दिनांक *</label><input type="date" id="pt-date"></div>
+        <div class="fg">
           <label>वेळ पसंती *</label>
           <select id="pt-time">
             <option value="">-- वेळ निवडा --</option>
@@ -621,159 +437,132 @@
             <option>सायंकाळी 7:00 - 8:00</option>
           </select>
         </div>
-        <div class="form-group full">
-          <label>तक्रार / आजाराचे स्वरूप</label>
-          <textarea id="pt-complaint" placeholder="आपल्या आजाराबद्दल थोडक्यात लिहा..."></textarea>
-        </div>
-        <div class="form-group full">
+        <div class="fg full"><label>तक्रार / आजाराचे स्वरूप</label><textarea id="pt-complaint" placeholder="आपल्या आजाराबद्दल थोडक्यात लिहा..."></textarea></div>
+        <div class="fg full">
           <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
-            <input type="checkbox" id="pt-urgent"> 
+            <input type="checkbox" id="pt-urgent">
             <span>🚨 हे Urgent आहे (Emergency consultation)</span>
           </label>
         </div>
       </div>
-      <button class="submit-btn" onclick="bookAppointment()">✅ Appointment बुक करा</button>
-      <div class="success-msg" id="success-msg">
-        🎉 आपले Appointment यशस्वीरित्या बुक झाले! आमचे कर्मचारी लवकरच आपल्याशी संपर्क करतील.
-        <br><small style="opacity:0.7">Appointment ID: <span id="appt-id"></span></small>
-      </div>
+      <button class="sbtn" onclick="bookAppointment()">✅ Appointment बुक करा</button>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact">
-    <div class="section-header">
-      <span class="section-tag">संपर्क</span>
-      <h2 class="section-title">आमच्याशी संपर्क करा</h2>
+    <div class="shdr">
+      <span class="stag">संपर्क</span>
+      <h2 class="stitle">आमच्याशी संपर्क करा</h2>
     </div>
-    <div class="contact-grid" style="max-width:900px;margin:0 auto;">
-      <div class="contact-info">
-        <h3>Sahyadri Multi-Specialty Hospital</h3>
-        <div class="contact-item">
-          <div class="contact-icon">📍</div>
-          <div class="contact-text"><strong>पत्ता</strong><span>Survey No. 45, Karve Road,<br>Deccan Gymkhana, Pune - 411 004</span></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">📞</div>
-          <div class="contact-text"><strong>फोन</strong><span>020-2567-8900 (Reception)<br>020-2567-8999 (Emergency 24/7)</span></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">📧</div>
-          <div class="contact-text"><strong>Email</strong><span>info@sahyadrihospital.com<br>appointments@sahyadrihospital.com</span></div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">🕐</div>
-          <div class="contact-text"><strong>OPD वेळ</strong><span>सोमवार - शनिवार: सकाळी 9 ते रात्री 9<br>रविवार: सकाळी 10 ते दुपारी 2</span></div>
-        </div>
+    <div class="cgrid" style="max-width:900px;margin:0 auto;">
+      <div class="cinfo">
+        <h3>Demo Multi-Specialty Hospital</h3>
+        <div class="citem"><div class="cion">📍</div><div class="ctxt"><strong>पत्ता</strong><span>Survey No. XX, Demo Road,<br>Demo Area, Demo City - 000 000</span></div></div>
+        <div class="citem"><div class="cion">📞</div><div class="ctxt"><strong>फोन</strong><span>0XX-XXXX-XXXX (Reception)<br>0XX-XXXX-XXXX (Emergency 24/7)</span></div></div>
+        <div class="citem"><div class="cion">📧</div><div class="ctxt"><strong>Email</strong><span>info@demohospital.com<br>appointments@demohospital.com</span></div></div>
+        <div class="citem"><div class="cion">🕐</div><div class="ctxt"><strong>OPD वेळ</strong><span>सोमवार - शनिवार: सकाळी 9 ते रात्री 9<br>रविवार: सकाळी 10 ते दुपारी 2</span></div></div>
         <div style="margin-top:1.5rem;">
-          <button class="btn-primary" onclick="showReception()">🏥 Reception Dashboard पहा</button>
+          <button class="btn-p" onclick="showReception()">🏥 Reception Dashboard पहा</button>
         </div>
       </div>
-      <div class="map-block">
-        <div class="map-icon">🗺️</div>
-        <p>Sahyadri Hospital, Pune</p>
-        <span>Karve Road, Deccan Gymkhana<br>Pune - 411 004, Maharashtra</span>
-        <a href="https://maps.google.com" target="_blank" style="color:var(--blue);font-size:13px;margin-top:0.5rem;">Google Maps वर उघडा →</a>
+      <div class="mapbox">
+        <div style="font-size:40px;">🗺️</div>
+        <p>Demo Hospital, Demo City</p>
+        <span>Demo Road, Demo Area<br>Demo City - 000 000</span>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-logo">✚ Sahyadri Multi-Specialty Hospital</div>
-    <p>Pune, Maharashtra | स्थापना 1999 | NABH Accredited</p>
-    <div class="footer-links">
+    <div class="flogo">✚ Demo Multi-Specialty Hospital</div>
+    <p>Demo City | स्थापना 1999 | NABH Accredited</p>
+    <div class="flinks">
       <a href="#">Privacy Policy</a>
       <a href="#">Terms & Conditions</a>
       <a href="#">Patient Rights</a>
-      <a href="#">Career</a>
       <a href="#" onclick="showReception()">Reception Login</a>
     </div>
-    <p style="margin-top:1.5rem;font-size:12px;opacity:0.4;">© 2024 Sahyadri Multi-Specialty Hospital. All rights reserved.</p>
+    <p style="margin-top:1.5rem;font-size:12px;opacity:.35;">© 2024 Demo Hospital. This is a demo website only.</p>
   </footer>
 
 </div><!-- /main-page -->
+
+<!-- SUCCESS POPUP -->
+<div class="overlay" id="popup-overlay">
+  <div class="popup">
+    <div class="popup-icon">✅</div>
+    <h2>Appointment बुक झाले!</h2>
+    <p>आपले appointment यशस्वीरित्या नोंदवले गेले आहे.<br>आमचे कर्मचारी लवकरच आपल्याशी संपर्क करतील.</p>
+    <div class="appt-ref" id="appt-summary">
+      <div class="ref-row"><span class="ref-lbl">Appointment ID</span><span class="ref-val" id="pop-id">—</span></div>
+      <div class="ref-row"><span class="ref-lbl">रुग्ण</span><span class="ref-val" id="pop-name">—</span></div>
+      <div class="ref-row"><span class="ref-lbl">विभाग</span><span class="ref-val" id="pop-dept">—</span></div>
+      <div class="ref-row"><span class="ref-lbl">डॉक्टर</span><span class="ref-val" id="pop-doctor">—</span></div>
+      <div class="ref-row"><span class="ref-lbl">दिनांक व वेळ</span><span class="ref-val" id="pop-dt">—</span></div>
+      <div class="ref-row"><span class="ref-lbl">मोबाईल</span><span class="ref-val" id="pop-phone">—</span></div>
+    </div>
+    <div class="popup-steps">
+      <span class="pstep">📋 Reception ला पाठवले</span>
+      <span class="pstep">📞 Call येईल</span>
+      <span class="pstep">✔️ Confirmed</span>
+    </div>
+    <button class="popup-close" onclick="closePopup()">ठीक आहे, धन्यवाद!</button>
+  </div>
+</div>
 
 <!-- RECEPTION PAGE -->
 <div id="reception-page" class="page">
   <nav>
     <div class="nav-logo">
-      <div class="cross">✚</div>
+      <div class="nav-cross">✚</div>
       <span>Reception Dashboard</span>
+      <span class="nav-badge">DEMO</span>
     </div>
     <div style="display:flex;gap:1rem;align-items:center;">
-      <span style="color:rgba(255,255,255,0.5);font-size:13px;" id="rec-date"></span>
+      <span style="color:rgba(255,255,255,.5);font-size:13px;" id="rec-date"></span>
       <button class="back-btn" onclick="showMain()">← Hospital Site</button>
-      <button class="print-btn" onclick="window.print()">🖨️ Print</button>
+      <button class="pbtn" onclick="window.print()">🖨️ Print</button>
     </div>
   </nav>
-
-  <div class="reception-page">
-    <div class="reception-header">
-      <div>
-        <h1>Appointments Dashboard</h1>
-        <p>सर्व बुक केलेले appointments येथे दिसतात</p>
-      </div>
+  <div class="recpage">
+    <div class="rechdr">
+      <div><h1>Appointments Dashboard</h1><p>सर्व बुक केलेले appointments येथे real-time दिसतात</p></div>
     </div>
-
-    <div class="reception-stats">
-      <div class="rec-stat teal">
-        <div class="num" id="stat-total">0</div>
-        <div class="lbl">एकूण Appointments</div>
-      </div>
-      <div class="rec-stat amber">
-        <div class="num" id="stat-today">0</div>
-        <div class="lbl">आजचे Appointments</div>
-      </div>
-      <div class="rec-stat coral">
-        <div class="num" id="stat-urgent">0</div>
-        <div class="lbl">Urgent Cases</div>
-      </div>
-      <div class="rec-stat blue">
-        <div class="num" id="stat-depts">0</div>
-        <div class="lbl">विभाग सक्रिय</div>
-      </div>
+    <div class="recstats">
+      <div class="rst c1"><div class="n" id="s-total">0</div><div class="l">एकूण Appointments</div></div>
+      <div class="rst c2"><div class="n" id="s-today">0</div><div class="l">आजचे Appointments</div></div>
+      <div class="rst c3"><div class="n" id="s-urgent">0</div><div class="l">Urgent Cases</div></div>
+      <div class="rst c4"><div class="n" id="s-depts">0</div><div class="l">विभाग सक्रिय</div></div>
     </div>
-
-    <div class="filter-bar">
-      <label>Filter करा:</label>
-      <select id="filter-dept" onchange="renderTable()">
+    <div class="fbar">
+      <label>Filter:</label>
+      <select id="f-dept" onchange="renderTable()">
         <option value="">सर्व विभाग</option>
-        <option>Cardiology (हृदयरोग)</option>
-        <option>Neurology (मेंदूरोग)</option>
-        <option>Orthopedics (हाडरोग)</option>
-        <option>Pediatrics (बालरोग)</option>
-        <option>Gastroenterology</option>
-        <option>Gynecology (स्त्रीरोग)</option>
+        <option>Cardiology (हृदयरोग)</option><option>Neurology (मेंदूरोग)</option>
+        <option>Orthopedics (हाडरोग)</option><option>Pediatrics (बालरोग)</option>
+        <option>Gastroenterology</option><option>Gynecology (स्त्रीरोग)</option>
         <option>General Medicine</option>
       </select>
-      <select id="filter-urgent" onchange="renderTable()">
+      <select id="f-urg" onchange="renderTable()">
         <option value="">सर्व प्रकार</option>
         <option value="urgent">फक्त Urgent</option>
         <option value="normal">फक्त Normal</option>
       </select>
-      <input type="date" id="filter-date" onchange="renderTable()" placeholder="दिनांक निवडा">
-      <input type="text" id="filter-search" oninput="renderTable()" placeholder="🔍 नाव किंवा नंबर शोधा...">
+      <input type="date" id="f-date" onchange="renderTable()">
+      <input type="text" id="f-search" oninput="renderTable()" placeholder="🔍 नाव किंवा नंबर शोधा...">
     </div>
-
-    <div class="appt-table-wrap">
+    <div class="twrap">
       <table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>रुग्णाचे नाव</th>
-            <th>वय/लिंग</th>
-            <th>मोबाईल</th>
-            <th>विभाग</th>
-            <th>डॉक्टर</th>
-            <th>दिनांक</th>
-            <th>वेळ</th>
-            <th>तक्रार</th>
-            <th>प्रकार</th>
+            <th>ID</th><th>रुग्णाचे नाव</th><th>वय/लिंग</th><th>मोबाईल</th>
+            <th>विभाग</th><th>डॉक्टर</th><th>दिनांक</th><th>वेळ</th><th>तक्रार</th><th>प्रकार</th>
           </tr>
         </thead>
         <tbody id="appt-tbody">
-          <tr><td colspan="10"><div class="empty-state"><div class="icon">📋</div><p>अद्याप कोणतेही appointments नाहीत</p><small>Patient ने appointment बुक केल्यावर येथे दिसेल</small></div></td></tr>
+          <tr><td colspan="10"><div class="empty"><div class="eicon">📋</div><p>अद्याप कोणतेही appointments नाहीत</p><small>Patient ने appointment बुक केल्यावर येथे दिसेल</small></div></td></tr>
         </tbody>
       </table>
     </div>
@@ -781,147 +570,121 @@
 </div>
 
 <script>
-  let appointments = [];
+let appointments = [];
 
-  function scrollTo(id) {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+function goto(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+
+function showReception(){
+  document.getElementById('main-page').classList.remove('active');
+  document.getElementById('reception-page').classList.add('active');
+  window.scrollTo(0,0);
+  const now = new Date();
+  document.getElementById('rec-date').textContent =
+    now.toLocaleDateString('mr-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  updateStats();renderTable();
+}
+function showMain(){
+  document.getElementById('reception-page').classList.remove('active');
+  document.getElementById('main-page').classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function genId(){return 'DH'+Date.now().toString().slice(-6);}
+
+function bookAppointment(){
+  const name = document.getElementById('pt-name').value.trim();
+  const age  = document.getElementById('pt-age').value.trim();
+  const phone= document.getElementById('pt-phone').value.trim();
+  const dept = document.getElementById('pt-dept').value;
+  const date = document.getElementById('pt-date').value;
+  const time = document.getElementById('pt-time').value;
+
+  if(!name||!phone||!dept||!date||!time){alert('कृपया * असलेले सर्व fields भरा');return;}
+  if(phone.length!==10||isNaN(phone)){alert('कृपया 10 अंकी मोबाईल नंबर टाका');return;}
+
+  const id = genId();
+  const doc = document.getElementById('pt-doctor').value||'TBD';
+  const appt = {
+    id,name,age,phone,
+    email:document.getElementById('pt-email').value,
+    dept,doctor:doc,date,time,
+    complaint:document.getElementById('pt-complaint').value||'—',
+    urgent:document.getElementById('pt-urgent').checked,
+    bookedAt:new Date().toLocaleString('mr-IN')
+  };
+  appointments.unshift(appt);
+
+  // Fill popup
+  document.getElementById('pop-id').textContent = id;
+  document.getElementById('pop-name').textContent = name;
+  document.getElementById('pop-dept').textContent = dept;
+  document.getElementById('pop-doctor').textContent = doc;
+  document.getElementById('pop-dt').textContent = fmtDate(date)+' | '+time;
+  document.getElementById('pop-phone').textContent = phone;
+
+  document.getElementById('popup-overlay').classList.add('show');
+
+  // Reset form
+  ['pt-name','pt-age','pt-phone','pt-email','pt-dept','pt-doctor','pt-date','pt-time','pt-complaint'].forEach(i=>document.getElementById(i).value='');
+  document.getElementById('pt-urgent').checked=false;
+}
+
+function closePopup(){document.getElementById('popup-overlay').classList.remove('show');}
+
+// Close overlay on outside click
+document.getElementById('popup-overlay').addEventListener('click',function(e){
+  if(e.target===this)closePopup();
+});
+
+function fmtDate(d){
+  if(!d)return'—';
+  const [y,m,day]=d.split('-');
+  const mo=['','जाने','फेब्रु','मार्च','एप्रिल','मे','जून','जुलै','ऑगस्ट','सप्टें','ऑक्टो','नोव्हें','डिसें'];
+  return `${day} ${mo[+m]} ${y}`;
+}
+
+function updateStats(){
+  const today=new Date().toISOString().split('T')[0];
+  document.getElementById('s-total').textContent=appointments.length;
+  document.getElementById('s-today').textContent=appointments.filter(a=>a.date===today).length;
+  document.getElementById('s-urgent').textContent=appointments.filter(a=>a.urgent).length;
+  document.getElementById('s-depts').textContent=new Set(appointments.map(a=>a.dept)).size;
+}
+
+function renderTable(){
+  updateStats();
+  const fd=document.getElementById('f-dept').value;
+  const fu=document.getElementById('f-urg').value;
+  const fdt=document.getElementById('f-date').value;
+  const fs=document.getElementById('f-search').value.toLowerCase();
+  let list=appointments.filter(a=>{
+    if(fd&&a.dept!==fd)return false;
+    if(fu==='urgent'&&!a.urgent)return false;
+    if(fu==='normal'&&a.urgent)return false;
+    if(fdt&&a.date!==fdt)return false;
+    if(fs&&!a.name.toLowerCase().includes(fs)&&!a.phone.includes(fs))return false;
+    return true;
+  });
+  const tb=document.getElementById('appt-tbody');
+  if(!list.length){
+    tb.innerHTML=`<tr><td colspan="10"><div class="empty"><div class="eicon">📋</div><p>${appointments.length===0?'अद्याप कोणतेही appointments नाहीत':'Filter नुसार records नाहीत'}</p><small>${appointments.length===0?'Patient ने appointment बुक केल्यावर येथे दिसेल':'Filter बदला'}</small></div></td></tr>`;
+    return;
   }
+  tb.innerHTML=list.map(a=>`<tr>
+    <td style="font-size:11px;color:var(--gray);font-family:monospace;">${a.id}</td>
+    <td><div class="tdname">${a.name}</div><div class="tdsub">${a.bookedAt}</div></td>
+    <td>${a.age||'—'}</td>
+    <td>📞 ${a.phone}</td>
+    <td style="font-size:12px;">${a.dept}</td>
+    <td style="font-size:12px;color:var(--blue);">${a.doctor}</td>
+    <td style="font-size:12px;">${fmtDate(a.date)}</td>
+    <td style="font-size:12px;">${a.time}</td>
+    <td style="font-size:12px;max-width:160px;word-wrap:break-word;">${a.complaint}</td>
+    <td><span class="badge ${a.urgent?'urg':'nm'}">${a.urgent?'🚨 Urgent':'✅ Normal'}</span></td>
+  </tr>`).join('');
+}
 
-  function showReception() {
-    document.getElementById('main-page').classList.remove('active');
-    document.getElementById('reception-page').classList.add('active');
-    window.scrollTo(0,0);
-    updateRecDate();
-    updateStats();
-    renderTable();
-  }
-
-  function showMain() {
-    document.getElementById('reception-page').classList.remove('active');
-    document.getElementById('main-page').classList.add('active');
-    window.scrollTo(0,0);
-  }
-
-  function updateRecDate() {
-    const now = new Date();
-    document.getElementById('rec-date').textContent =
-      now.toLocaleDateString('mr-IN', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
-  }
-
-  function generateId() {
-    return 'SH' + Date.now().toString().slice(-6);
-  }
-
-  function bookAppointment() {
-    const name = document.getElementById('pt-name').value.trim();
-    const age = document.getElementById('pt-age').value.trim();
-    const phone = document.getElementById('pt-phone').value.trim();
-    const dept = document.getElementById('pt-dept').value;
-    const date = document.getElementById('pt-date').value;
-    const time = document.getElementById('pt-time').value;
-
-    if (!name || !phone || !dept || !date || !time) {
-      alert('कृपया * असलेले सर्व fields भरा');
-      return;
-    }
-    if (phone.length !== 10 || isNaN(phone)) {
-      alert('कृपया 10 अंकी मोबाईल नंबर टाका');
-      return;
-    }
-
-    const id = generateId();
-    const appt = {
-      id, name, age,
-      phone: '📞 ' + phone,
-      email: document.getElementById('pt-email').value,
-      dept,
-      doctor: document.getElementById('pt-doctor').value || 'TBD',
-      date,
-      time,
-      complaint: document.getElementById('pt-complaint').value || '-',
-      urgent: document.getElementById('pt-urgent').checked,
-      bookedAt: new Date().toLocaleString('mr-IN')
-    };
-
-    appointments.unshift(appt);
-
-    document.getElementById('appt-id').textContent = id;
-    const msg = document.getElementById('success-msg');
-    msg.style.display = 'block';
-    setTimeout(() => msg.style.display = 'none', 6000);
-
-    // reset form
-    ['pt-name','pt-age','pt-phone','pt-email','pt-dept','pt-doctor','pt-date','pt-time','pt-complaint'].forEach(id => {
-      document.getElementById(id).value = '';
-    });
-    document.getElementById('pt-urgent').checked = false;
-  }
-
-  function updateStats() {
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('stat-total').textContent = appointments.length;
-    document.getElementById('stat-today').textContent = appointments.filter(a => a.date === today).length;
-    document.getElementById('stat-urgent').textContent = appointments.filter(a => a.urgent).length;
-    const depts = new Set(appointments.map(a => a.dept)).size;
-    document.getElementById('stat-depts').textContent = depts;
-  }
-
-  function renderTable() {
-    updateStats();
-    const filterDept = document.getElementById('filter-dept').value;
-    const filterUrgent = document.getElementById('filter-urgent').value;
-    const filterDate = document.getElementById('filter-date').value;
-    const search = document.getElementById('filter-search').value.toLowerCase();
-
-    let filtered = appointments.filter(a => {
-      if (filterDept && a.dept !== filterDept) return false;
-      if (filterUrgent === 'urgent' && !a.urgent) return false;
-      if (filterUrgent === 'normal' && a.urgent) return false;
-      if (filterDate && a.date !== filterDate) return false;
-      if (search && !a.name.toLowerCase().includes(search) && !a.phone.includes(search)) return false;
-      return true;
-    });
-
-    const tbody = document.getElementById('appt-tbody');
-    if (filtered.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="10"><div class="empty-state">
-        <div class="icon">📋</div>
-        <p>${appointments.length === 0 ? 'अद्याप कोणतेही appointments नाहीत' : 'Filter नुसार कोणतेही records नाहीत'}</p>
-        <small>${appointments.length === 0 ? 'Patient ने appointment बुक केल्यावर येथे दिसेल' : 'Filter बदला'}</small>
-      </div></td></tr>`;
-      return;
-    }
-
-    const dateDisplay = d => {
-      if (!d) return '-';
-      const [y,m,day] = d.split('-');
-      const months = ['','जाने','फेब्रु','मार्च','एप्रिल','मे','जून','जुलै','ऑगस्ट','सप्टें','ऑक्टो','नोव्हें','डिसें'];
-      return `${day} ${months[+m]} ${y}`;
-    };
-
-    tbody.innerHTML = filtered.map(a => `
-      <tr>
-        <td style="font-size:11px;color:var(--gray);font-family:monospace;">${a.id}</td>
-        <td>
-          <div class="td-name">${a.name}</div>
-          <div class="td-sub">${a.bookedAt}</div>
-        </td>
-        <td>${a.age || '-'}</td>
-        <td>${a.phone}</td>
-        <td style="font-size:12px;">${a.dept}</td>
-        <td style="font-size:12px;color:var(--blue);">${a.doctor}</td>
-        <td style="font-size:12px;">${dateDisplay(a.date)}</td>
-        <td style="font-size:12px;">${a.time}</td>
-        <td style="font-size:12px;max-width:180px;word-wrap:break-word;">${a.complaint}</td>
-        <td>
-          <span class="badge ${a.urgent ? 'urgent' : 'new'}">${a.urgent ? '🚨 Urgent' : '✅ Normal'}</span>
-        </td>
-      </tr>
-    `).join('');
-  }
-
-  // Set today as min date for appointment
-  document.getElementById('pt-date').min = new Date().toISOString().split('T')[0];
+document.getElementById('pt-date').min=new Date().toISOString().split('T')[0];
 </script>
 </body>
 </html>
